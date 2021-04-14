@@ -24,8 +24,7 @@ namespace Sudoku.ConsoleApp
         int contm = 0;
         int a = 0;
         int b = 0;
-        int c = 0;
-
+        bool verifica = true;
 
 
         public void RecebeNaMatriz()
@@ -100,72 +99,40 @@ namespace Sudoku.ConsoleApp
 
         public void VerificaQuadrados()
         {
-            int counter1=0;
-            int counter2=0;
-            int counter3=0;
-            int counter4=0;
-            int counter5=0;
-            int counter6=0;
-            int counter7=0;
-            int counter8=0;
-            int counter9=0;
-            for (int i = 0; i < 9; i++)
+            int cont4 = 0;
+            int cont5 = 0;
+            int soma = 0;
+            for (int i = 0; i < 3; i++)
             {
                 
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < 3; j++)
                 {
-                    if ((i==0 || i == 1 || i==2) && (j==0 || j==1 || j==2))
+                    cont4 = i * 3;
+                    cont5 = j * 3;
+                    soma = 0;
+                    for (int k = cont4; k < cont4+3; k++)
                     {
-                        counter1 = counter1 + matriz[i, j];
+                        for (int l = cont5; l < cont5+3; l++)
+                        {
+                            soma = matriz[k, l] + soma;
+                        }
                     }
-                    if ((i == 0 || i == 1 || i == 2) && (j == 3 || j == 4 || j == 5))
+                    if (soma!=45)
                     {
-                        counter2 = counter2 + matriz[i, j];
+                        this.verifica = false;
                     }
-                    if ((i == 0 || i == 1 || i == 2) && (j == 6 || j == 7 || j == 8))
-                    {
-                        counter3 = counter3 + matriz[i, j];
-                    }
-
-                    if ((i == 3 || i == 4 || i == 5) && (j == 0 || j == 1 || j == 2))
-                    {
-                        counter4 = counter4 + matriz[i, j];
-                    }
-                    if ((i == 3 || i == 4 || i == 5) && (j == 3 || j == 4 || j == 5))
-                    {
-                        counter5 = counter5 + matriz[i, j];
-                    }
-                    if ((i == 3 || i == 4 || i == 5) && (j == 6 || j == 7 || j == 8))
-                    {
-                        counter6 = counter6 + matriz[i, j];
-                    }
-
-                    if ((i == 6 || i == 7 || i == 8) && (j == 0 || j == 1 || j == 2))
-                    {
-                        counter7 = counter7 + matriz[i, j];
-                    }
-                    if ((i == 6 || i == 7 || i == 8) && (j == 3 || j == 4 || j == 5))
-                    {
-                        counter8 = counter8 + matriz[i, j];
-                    }
-                    if ((i == 6 || i == 7 || i == 8) && (j == 6 || j == 7 || j == 8))
-                    {
-                        counter9 = counter9 + matriz[i, j];
-                    }
-
-                    
                 }
+
             }
-            if (counter1 == 45 && counter2 == 45 && counter3 == 45 && counter4 == 45 && counter5 == 45 && counter6 == 45
-                        && counter7 == 45 && counter7 == 45 && counter8 == 45 && counter9 == 45)
-                this.c = 0;
-            else
-                this.c = 1;
+            if (verifica == false)
+            {
+                Console.WriteLine("erro");
+            }
         }
 
         public void Saida()
         {
-            if (a==0 && b ==0 && c==0)
+            if (a==0 && b ==0 && verifica == true)
             {
                 Console.WriteLine("SIM!");
             }
