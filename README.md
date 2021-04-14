@@ -19,7 +19,7 @@ Translation...
 This is a "sudoku" test made with C#, with output in console. On this program, you can test an input, if it is valid for sudoku rules, you'll see "SIM" (like "yes"),
 else, you'll see "ERRO". The input is made in the class "Exec".
 
-Example of an input:
+Input example:
 # 1 3 2 5 7 9 4 6 8
 # 4 9 8 2 6 1 3 7 5
 # 7 5 6 3 8 4 2 1 9
